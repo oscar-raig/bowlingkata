@@ -5,7 +5,7 @@ public class BowlingThrow {
   private final int knockedPins;
 
   public BowlingThrow(int knockedPins) {
-    if((knockedPins < 0) || (knockedPins>12)) {
+    if ((knockedPins < 0) || (knockedPins > 12)) {
       throw new InvalidKnockedPin();
     }
     this.knockedPins = knockedPins;

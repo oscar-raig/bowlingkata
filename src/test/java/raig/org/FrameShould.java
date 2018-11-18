@@ -1,5 +1,6 @@
 package raig.org;
 
+
 import org.hamcrest.core.Is;
 import org.junit.Before;
 import org.junit.Test;
@@ -41,5 +42,14 @@ public class FrameShould {
     bowlingframe.add(new BowlingThrow(1));
     bowlingframe.add(new BowlingThrow(1));
     bowlingframe.add(new BowlingThrow(1));
+  }
+
+  @Test
+  public void sumThrowsInScore() {
+
+    bowlingframe.add(new BowlingThrow(6));
+    bowlingframe.add(new BowlingThrow(3));
+
+    assertThat(bowlingframe.getScore(), Is.is(9));
   }
 }

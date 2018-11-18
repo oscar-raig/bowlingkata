@@ -2,6 +2,7 @@ package raig.org;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BowlingFrame {
 
@@ -9,7 +10,9 @@ public class BowlingFrame {
   private List<BowlingThrow> throwlist = new ArrayList<>();
 
   public int getScore() {
-    return score;
+    return throwlist.stream()
+            .map(bowlingThrow -> bowlingThrow.getKnockedPins())
+            .collect(Collectors.summingInt(Integer::intValue));
   }
 
   public int getThowNumber() {
@@ -17,7 +20,7 @@ public class BowlingFrame {
   }
 
   public void add(BowlingThrow bowlingThrow) {
-    if(throwlist.size()>= 3) {
+    if (throwlist.size() >= 3) {
       throw new MaximNumberOfThrowsReached();
     }
     throwlist.add(bowlingThrow);
